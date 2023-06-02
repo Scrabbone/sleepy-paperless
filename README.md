@@ -14,6 +14,15 @@
 
 I use the wonderful paperless-ngx project on a raspberry pi 4 myself to archive my documents. Unfortunately, the postgresql database prevents the spindown of the HDDs. For this reason, I came up with this solution. I changed the [docker-compose.yml](/docker-compose.yml) file and added two additional container and python scripts to pause the paperless-ngx containers. With a call to ```http://[hostname]:8080/wake_up```, Paperless is started and remains running as long as the service is used. If the service idles for a long time, it is paused to save energy and let the HDDs spindown.
 
+# 🛤️ What did i change?
+
+The following files were taken over from the paperless-ngx project and changed
+
+- [docker-compose.yml](/docker-compose.yml)
+    - Mainly, two new containers for the sleep and alarm mechanism were added
+- [docker-compose.env](/docker-compose.env)
+    - Filled Attributes with dummy values
+
 # 🛠️ Setup
 
 <b style="color: coral">Please test the setup with a test system before you put it on your productive archiving system with your important files. The archive system is accessed via http at the end and the transmission is therefore unencrypted. Therefore, do not use the project outside of a secured area, such as a LAN</b>
